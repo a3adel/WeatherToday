@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WeatherToday</string>
+    <string name="default_error">Something went wrong, please try again later</string>
+    <string name="no_network">Netwrok is not available, please check your network</string>
+    <string name="capture_new_image">Capture New Image</string>
+
 </resources>

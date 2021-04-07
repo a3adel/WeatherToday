@@ -17,6 +17,9 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        def localProperties = new Properties()
+        localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+        buildConfigField("String", "API_KEY", localProperties['API_KEY'])
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,6 +36,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 }
 
@@ -100,4 +107,6 @@ dependencies {
 
     // alerts
     implementation "com.github.f0ris.sweetalert:library:$sweet_version"
+    implementation 'androidx.fragment:fragment:1.3.0'
+
 }

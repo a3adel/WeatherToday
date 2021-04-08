@@ -2,6 +2,7 @@ package com.example.weathertoday.data.mappers
 
 import com.example.weathertoday.data.base.Mapper
 import com.example.weathertoday.data.entities.WeatherInfoEntity
+import com.example.weathertoday.domain.models.Weather
 import com.example.weathertoday.domain.models.WeatherInfo
 import javax.inject.Inject
 
@@ -15,8 +16,12 @@ class WeatherInfoEntityToWeatherInfoMapper @Inject constructor(
 ) :
     Mapper<WeatherInfoEntity, WeatherInfo>() {
     override fun mapFrom(from: WeatherInfoEntity): WeatherInfo {
+        val weathers = ArrayList<Weather>()
+        for(weatherInfo in from.weather){
+            weathers.add(weatherEntityMapper.mapFrom(weatherInfo))
+        }
         return WeatherInfo(
-            weather = weatherEntityMapper.mapFrom(from.weather),
+            weather = weathers,
             cloud = cloudEntityMapper.mapFrom(from.cloudEntity),
             rain = from.rainEntity?.let { rainEntityMapper.mapFrom(it) },
             snow = from.snowEntity?.let { snowEntityMapper.mapFrom(it) },

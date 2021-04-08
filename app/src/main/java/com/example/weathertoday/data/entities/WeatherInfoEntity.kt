@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class WeatherInfoEntity(
-    @Json(name = "weather") val weather: WeatherEntity,
+    @Json(name = "weather") val weather: List<WeatherEntity>,
     @Json(name = "main") val main: MainInfoEntity,
     @Json(name = "wind")val windEntity: WindEntity,
     @Json(name = "clouds")val cloudEntity:CloudEntity,

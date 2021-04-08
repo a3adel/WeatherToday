@@ -8,9 +8,10 @@ import retrofit2.http.Query
 
 interface GeoWeatherInterface {
     @GET("data/2.5/weather")
-    fun getGeoWeather(
+    suspend fun getGeoWeather(
         @Query(ApiConstants.APP_ID_KEY) appKey: String = BuildConfig.API_KEY,
         @Query("lat") lat: Double,
-        @Query("lon") lon: Double
+        @Query("lon") lon: Double,
+        @Query("units")unit:String="metric"
     ):Response<WeatherInfoEntity>
 }

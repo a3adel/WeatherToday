@@ -15,7 +15,7 @@ import retrofit2.Retrofit
 class GeoWeatherModule {
     @Provides
     @ViewModelScoped
-    fun provideWeatherApiInterface(retrofit: Retrofit) =
+    fun provideWeatherApiInterface(retrofit: Retrofit):GeoWeatherInterface =
         retrofit.create(GeoWeatherInterface::class.java)
 
     @Provides

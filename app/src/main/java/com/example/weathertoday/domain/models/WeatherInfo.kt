@@ -3,7 +3,7 @@ package com.example.weathertoday.domain.models
 import com.example.weathertoday.data.entities.*
 
 data class WeatherInfo(
-    val weather: Weather,
+    val weather: List<Weather>,
     val main: MainInfo,
     val wind: Wind,
     val cloud: Cloud,

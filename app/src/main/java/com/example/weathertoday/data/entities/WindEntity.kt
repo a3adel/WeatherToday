@@ -5,6 +5,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class WindEntity(
-    @Json(name = "speed") val speed: Double,
-    @Json(name = "degree") val degree: Double
+    @Json(name = "speed") val speed: Double?=null,
+    @Json(name = "degree") val degree: Double?=null
 )

@@ -21,15 +21,19 @@ class HomeViewModel @Inject constructor(
     private val weatherMutableLiveData = MutableLiveData<WeatherInfo>()
     val weatherLiveData: LiveData<WeatherInfo> get() = weatherMutableLiveData
     fun getGeoWeather(lat: Double, lon: Double) {
-        showProgressBarMutableLiveData.value = (SingleEvent(Unit))
+        showProgressBarMutableLiveData.postValue( (SingleEvent(Unit)))
 
         viewModelScope.launch(dispatcher.io()) {
             when (val resource = getGeoWeatherUseCase.getWeather(lat, lon)) {
                 is Resource.Success -> {
-                    resource.data.let { weatherMutableLiveData.value = it }
+                    hideProgressBarMutableLiveData.postValue( (SingleEvent(Unit)))
+
+                    resource.data.let {
+                        weatherMutableLiveData.postValue( it) }
                 }
                 is Resource.Error -> {
-                    toastMutableLiveData.value = SingleEvent(resource.message)
+                    hideProgressBarMutableLiveData.postValue( (SingleEvent(Unit)))
+                    toastMutableLiveData.postValue(SingleEvent(resource.message))
                 }
             }
         }

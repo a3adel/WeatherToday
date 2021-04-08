@@ -3,5 +3,9 @@
     <string name="default_error">Something went wrong, please try again later</string>
     <string name="no_network">Netwrok is not available, please check your network</string>
     <string name="capture_new_image">Capture New Image</string>
+    <string name="location_permission_hint">we need your device location to get the weather information</string>
+    <string name="enable_location">Enable Location</string>
+    <string name="open_history">open history</string>
+    <string name="loading">Loading Weather Data from API</string>
 
 </resources>

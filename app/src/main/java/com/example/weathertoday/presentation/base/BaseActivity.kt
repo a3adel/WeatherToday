@@ -33,17 +33,7 @@ abstract class BaseActivity : AppCompatActivity() {
             ?.let { showToast(it) }
     }
 
-    fun observeShowProgressDialog(singleEvent: SingleEvent<Unit>) {
-        singleEvent.getContentIfNotHandled()?.let {
-            showProgressDialog("Loading")
-        }
-    }
 
-    fun observeHideProgressDialog(singleEvent: SingleEvent<Unit>) {
-        singleEvent.getContentIfNotHandled()?.let {
-            hideProgressDialog()
-        }
-    }
 
     fun showProgressDialog(title: String, cancelable: Boolean = false) {
         progressDialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
